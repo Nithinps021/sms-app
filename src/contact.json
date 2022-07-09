@@ -1,0 +1,71 @@
+[
+	{
+		"fname":"rahul",
+		"lname":"rs",
+		"phoneno":"+919495773275",
+		"address":"8E artech courtyard ,metupalayam",
+		"pincode":"695005"
+	},
+	{
+		"fname":"nithin",
+		"lname":"ps",
+		"phoneno":"+919495745275",
+		"address":"paruthipara jnc",
+		"pincode":"695045"
+	},
+	{	"fname":"fabi",
+		"lname":"kp",
+		"phoneno":"+919789773275",
+		"address":"8E artech courtyard ,meuttada",
+		"pincode":"68005"
+	},
+	{
+		"fname":"jason",
+		"lname":"j",
+		"phoneno":"+919495783278",
+		"address":"Angel wings,metupalayam",
+		"pincode":"694045"
+	},
+	{
+		"fname":"fazna",
+		"lname":"harees",
+		"phoneno":"+919495234275",
+		"address":"myrakad thallok apees",
+		"pincode":"695565"
+	},
+	{
+		"fname":"akshay",
+		"lname":"kumar",
+		"phoneno":"+919379773275",
+		"address":"devils labour dome enterprise ",
+		"pincode":"686505"
+	},
+	{
+		"fname":"fahad",
+		"lname":"fazil",
+		"phoneno":"+919495773678",
+		"address":"calicult kuttanad",
+		"pincode":"695555"
+	},
+	{
+		"fname":"kumari",
+		"lname":"hamsaa",
+		"phoneno":"+919495773256",
+		"address":"menmeana illathe kakanad",
+		"pincode":"695085"
+	},
+	{
+		"fname":"shake",
+		"lname":"muhammad",
+		"phoneno":"+919494563275",
+		"address":"muttapara ml llhs thuruthu colony",
+		"pincode":"695453"
+	},
+	{
+		"fname":"nabi",
+		"lname":"pillai",
+		"phoneno":"+919456773275",
+		"address":"maruthamuni thallook ashootri valav",
+		"pincode":"695008"
+	}
+]
