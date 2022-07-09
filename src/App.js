@@ -5,7 +5,9 @@ import MainPage from './pages/mainPage'
 import AppBar from './components/appBar';
 import ContactDetails from "./pages/contactDetails";
 import SendMessage from "./pages/sendMessagePage";
+import axios from "axios";
 
+axios.defaults.baseURL="https://sms-backends.herokuapp.com/"
 
 function App() {
   return (

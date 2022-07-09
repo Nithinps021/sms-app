@@ -5,15 +5,26 @@ import { Grid,TextField} from '@mui/material';
 import { useParams } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
+import axios from 'axios'
+
 
 
 export default function SendMessageUi(props) {
+
+
     const { phoneno } = useParams()
     let data = JSON.parse(localStorage.getItem('data'))
     const user = data.filter((ele) => ele.phoneno == phoneno)[0]
-    const [value, setValue] = useState()
-    const handleChange = () => {
-
+    const [value, setValue] = useState('hello how are you')
+    const handleChange = (e) => {
+    }
+    const handleSend=()=>{
+        axios.get('/').then(res=>{
+            console.log(res)
+        })
+        .catch(error=>{
+            console.log(error)
+        })
     }
     return (
         <Card sx={{ maxWidth: "100%", margin: 3 }} elevation={8}>
@@ -32,7 +43,7 @@ export default function SendMessageUi(props) {
                     </Grid>
                 </Grid>
                 <Grid item sx={{ marginTop: 3, textAlign: "center" }}>
-                    <Button variant="contained" endIcon={<SendIcon />}>
+                    <Button variant="contained" endIcon={<SendIcon />} onClick={handleSend}>
                         Send
                     </Button>
                 </Grid>
