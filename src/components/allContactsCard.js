@@ -8,10 +8,10 @@ import {useNavigate} from 'react-router-dom'
 
 
 export default function ContactCard(props) {
-    const url = "https://avatars.dicebear.com/api/initials/"+props.data.fname + " "+props.data.lname+".svg"
+    const url = "https://avatars.dicebear.com/api/bottts/"+props.data.fname + " "+props.data.lname+".svg"
     let navigate = useNavigate()
   return (
-    <Card sx={{ maxWidth:"100%", margin:3 }}  elevation={8}>
+    <Card sx={{ maxWidth:"100%", margin:3, borderRadius:5 }}  elevation={8}>
       <CardActionArea onClick={()=>navigate('details/'+props.data.phoneno)} >
         <CardContent>
             <Grid container spacing={1}>

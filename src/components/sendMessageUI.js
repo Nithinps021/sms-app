@@ -1,34 +1,58 @@
-import{useState} from 'react';
+import { useState,useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import { Grid,TextField} from '@mui/material';
+import { Grid, TextField } from '@mui/material';
 import { useParams } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import SendIcon from '@mui/icons-material/Send';
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
 export default function SendMessageUi(props) {
-
-
     const { phoneno } = useParams()
     let data = JSON.parse(localStorage.getItem('data'))
     const user = data.filter((ele) => ele.phoneno == phoneno)[0]
-    const [value, setValue] = useState('hello how are you')
-    const handleChange = (e) => {
-    }
-    const handleSend=()=>{
-        axios.get('/').then(res=>{
-            console.log(res)
+    const rand = Math.floor(Math.random()*1000000)
+    const [value, setValue] = useState('Your OTP number is '+rand)
+    const [loading,setLoading]=useState(false)
+    useEffect(()=>{
+        setLoading(loading)
+    },[loading])
+    const handleSend = async() => {
+        const body = {
+            message: value,
+            phoneno: user.phoneno
+        }
+        const id = toast.loading("Please wait...")
+        setLoading(true)
+        await axios.post('/send', body).then(res => {
+            console.log(res.data)
+            if (res.data.error) {
+                console.log(res.data)
+                if (res.data.error.code == 21608) {
+                    toast.update(id, { render: "Sorry 🥲🥲 can't send, the number is not verified", type: "error", isLoading: false, autoClose: true });
+                }
+                else {
+                    toast.update(id, { render: "Something went wrong 🤦‍♂️🤦‍♂️", type: "error", isLoading: false, autoClose: true });
+                }
+            }
+            else {
+                toast.update(id, { render: "Message has been send successfully 🙌🙌", type: "success", isLoading: false, autoClose: true });
+            }
         })
-        .catch(error=>{
-            console.log(error)
-        })
+            .catch(error => {
+                console.log(error)
+                toast.update(id, { render: "Something went wrong 🤦‍♂️🤦‍♂️", type: "error", isLoading: false, autoClose: true });
+            })
+        setLoading(false)
     }
     return (
-        <Card sx={{ maxWidth: "100%", margin: 3 }} elevation={8}>
-            <CardContent>
+        <Card sx={{ maxWidth: "100%",minHeight:"100%",borderRadius:5 }} elevation={8}>
+            <ToastContainer />
+            <CardContent >
                 <Grid container spacing={1} direction="column">
                     <Grid item xs={12}>
                         <TextField
@@ -38,12 +62,12 @@ export default function SendMessageUi(props) {
                             fullWidth={true}
                             minRows={8}
                             value={value}
-                            onChange={handleChange}
+                            onChange={(e) => setValue(e.target.value)}
                         />
                     </Grid>
                 </Grid>
                 <Grid item sx={{ marginTop: 3, textAlign: "center" }}>
-                    <Button variant="contained" endIcon={<SendIcon />} onClick={handleSend}>
+                    <Button variant="contained" endIcon={<SendIcon />} onClick={handleSend} disabled={loading} >
                         Send
                     </Button>
                 </Grid>

@@ -8,7 +8,7 @@ export default function ContactDetails() {
             <Grid container spacing={1} sx={{ marginTop: 10 }}>
                 <Grid item xs={1} md={2} lg={3} ></Grid>
                 <Grid item xs={10} md={8} lg={6}>
-                    <ContactDetailsCard />
+                    <ContactDetailsCard view={true} />
                 </Grid >
                 <Grid item xs={1} md={2} lg={3} ></Grid>
 
