@@ -1,6 +1,12 @@
 import Grid from "@mui/material/Grid"
 import ContactDetailsCard from "../components/contactDetailsCard"
 import AppBar from "@mui/material/AppBar"
+import ContactCard from "../components/allContactsCard"
+
+const data = require('../contact.json')
+console.log(data)
+
+localStorage.setItem('data', JSON.stringify(data))
 
 export default function ContactDetails() {
     return (
@@ -11,8 +17,8 @@ export default function ContactDetails() {
                     <ContactDetailsCard view={true} />
                 </Grid >
                 <Grid item xs={1} md={2} lg={3} ></Grid>
-
             </Grid>
+            
         </div>
     )
 }

@@ -5,6 +5,7 @@ import MainPage from './pages/mainPage'
 import AppBar from './components/appBar';
 import ContactDetails from "./pages/contactDetails";
 import SendMessage from "./pages/sendMessagePage";
+import HistoryPage from "./pages/historyPage";
 import axios from "axios";
 
 axios.defaults.baseURL="https://sms-backends.herokuapp.com/"
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<MainPage />} />
           <Route path="/details/:phoneno" element={<ContactDetails />} />
           <Route path="/sendmessage/:phoneno" element={<SendMessage/>}/>
+          <Route path="/history" element={<HistoryPage/>}/>
         </Routes>
     </>
   );

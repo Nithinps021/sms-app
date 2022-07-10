@@ -16,10 +16,10 @@ export default function ContactDetailsCard(props) {
     const user = data.filter((ele) => ele.phoneno == phoneno)[0]
     const url = "https://avatars.dicebear.com/api/bottts/" + user.fname + " " + user.lname + ".svg"
     return (
-        <Card sx={{ maxWidth: "100%",minHeight:"100%", borderRadius: 5 }} elevation={8}>
-            <CardContent>
+        <Card sx={{ width: "100%",minHeight:"100%", borderRadius: 5 }} elevation={8}>
+            <CardContent sx={{marginRight:1 }}>
                 <Grid container direction="column">
-                    <Grid item xs={12} sx={{ marginBottom: 3, textAlign: "center" }}  >
+                    <Grid item xs={12} sx={{ marginBottom: 1, textAlign: "center" }}  >
                         <img src={url} style={{ borderRadius: "50%", height: 100 }} ></img>
                     </Grid >
                     <Grid item xs={12}  >

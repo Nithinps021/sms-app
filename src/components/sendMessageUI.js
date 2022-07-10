@@ -21,6 +21,11 @@ export default function SendMessageUi(props) {
     useEffect(()=>{
         setLoading(loading)
     },[loading])
+
+    const handleChangeOtp=()=>{
+        setValue('Your OTP number is '+Math.floor(Math.random()*1000000))
+    }
+
     const handleSend = async() => {
         const body = {
             message: value,
@@ -41,6 +46,31 @@ export default function SendMessageUi(props) {
             }
             else {
                 toast.update(id, { render: "Message has been send successfully 🙌🙌", type: "success", isLoading: false, autoClose: true });
+                let history = JSON.parse(localStorage.getItem('history'))
+                if(history){
+                    const messageData={
+                        contact:user.fname+" "+user.lname,
+                        message:res.data.res.body,
+                        date:res.data.res.dateCreated,
+                        from:res.data.res.from,
+                        to:user.phoneno
+                    }
+                    history.push(messageData)
+                    localStorage.setItem('history',JSON.stringify(history))
+                }
+                else{
+                    let history =[]
+                    const messageData={
+                        contact:user.fname+" "+user.lname,
+                        message:res.data.res.body,
+                        date:res.data.res.dateCreated,
+                        from:res.data.res.from,
+                        to:user.phoneno
+                    }
+                    history.push(messageData)
+            
+                    localStorage.setItem('history',JSON.stringify(history))
+                }
             }
         })
             .catch(error => {
@@ -69,6 +99,9 @@ export default function SendMessageUi(props) {
                 <Grid item sx={{ marginTop: 3, textAlign: "center" }}>
                     <Button variant="contained" endIcon={<SendIcon />} onClick={handleSend} disabled={loading} >
                         Send
+                    </Button>
+                    <Button variant="text" onClick={handleChangeOtp} disabled={loading} >
+                        change Otp
                     </Button>
                 </Grid>
             </CardContent>
